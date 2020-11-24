@@ -10,9 +10,9 @@ public class Database {
     public Database() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String DATABASE_USER = EnvVariables.ENV.get("MYSQL_USER");
-            String DATABASE_PASSWORD = EnvVariables.ENV.get("MYSQL_PASSWORD");
-            String CONNECTION_STRING = EnvVariables.ENV.get("DATABASE_URL");
+            String DATABASE_USER = System.getenv("MYSQL_USER");
+            String DATABASE_PASSWORD = System.getenv("MYSQL_PASSWORD");
+            String CONNECTION_STRING = System.getenv("DATABASE_URL");
             connection = DriverManager.getConnection(CONNECTION_STRING, DATABASE_USER, DATABASE_PASSWORD);
         } catch (SQLException | ClassNotFoundException exception) {
             exception.printStackTrace();
